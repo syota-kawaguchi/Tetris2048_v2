@@ -75,6 +75,7 @@ public class Pause : MonoBehaviour
             .Subscribe(_ =>{
                 OnTapButton(true, true);
                 settingsPanel.SetActive(true);
+                GoogleAds.Instance.HideBannerAds();
             }).AddTo(this.gameObject);
 
         pausePanel.SetActive(false);

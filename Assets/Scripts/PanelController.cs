@@ -82,9 +82,9 @@ public class PanelController : MonoBehaviour
 
         if (OnModeDebug) return;
 
-        Debug.Log($"Screen : {Screen.orientation}");
-        Debug.Log($"Screen size width : {Screen.width}");
-        Debug.Log($"Screen size width : {Screen.height}");
+        //Debug.Log($"Screen : {Screen.orientation}");
+        //Debug.Log($"Screen size width : {Screen.width}");
+        //Debug.Log($"Screen size width : {Screen.height}");
 
         nextPanelCollection.Add(GenerateIndex());
 
@@ -126,9 +126,6 @@ public class PanelController : MonoBehaviour
         return !currentPanelObj || onProcessing || Pause.onPause;
     }
 
-    private void OnClickHoldButton() { 
-    }
-
     private void CreateNewPanel() {
         currentPanelObj = Instantiate(panelPrefab, instantiatePos, Quaternion.identity);
         currentPanel = currentPanelObj.GetComponent<Panel>();
@@ -165,10 +162,10 @@ public class PanelController : MonoBehaviour
 
     private void MoveDownBottom(Panel panel) {
         if (!panel) return;
-        int roundX = Mathf.RoundToInt(panel.transform.position.x);
-        for (int roundY = 0; roundY < Grid.HEIGHT; roundY++) {
-            if (!Grid.IsBlank(roundX, roundY)) continue;
-            panel.transform.position = new Vector3(roundX, roundY, 0);
+        int panelPosX = Mathf.RoundToInt(panel.transform.position.x);
+        for (int panelPosY = 0; panelPosY < Grid.HEIGHT; panelPosY++) {
+            if (!Grid.IsBlank(panelPosX, panelPosY)) continue;
+            panel.transform.position = new Vector3(panelPosX, panelPosY, 0);
             break;
         }
         Grid.Add(panel);

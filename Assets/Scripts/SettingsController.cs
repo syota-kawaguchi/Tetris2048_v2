@@ -114,5 +114,6 @@ public class SettingsController : SingletonMonoBehaviour<SettingsController>
         var seVolume = settings != null ? settings.seVolume : 0.8f;
         SEManager.Instance.Play(SEPath.TAP_SOUND2, volumeRate:seVolume);
         settingsPanel.SetActive(false);
+        GoogleAds.Instance.ShowBannerAds();
     }
 }
