@@ -15,7 +15,6 @@ public class GoogleAds : SingletonMonoBehaviour<GoogleAds>
     private int[] hideAdsSceneIndexes = new int[] { 2 };
 
     void Start() {
-        DontDestroyOnLoad(gameObject);
         MobileAds.Initialize(InitializationStatus => { });
         RequestBanner();
     }
@@ -25,7 +24,6 @@ public class GoogleAds : SingletonMonoBehaviour<GoogleAds>
 
         if (IsHideAds()) {
             HideBannerAds();
-            Debug.Log("bannerAds hide");
         }
         else {
             var request = new AdRequest.Builder().Build();
@@ -43,13 +41,21 @@ public class GoogleAds : SingletonMonoBehaviour<GoogleAds>
     }
 
     public void HideBannerAds() {
-        if (bannerView == null) return;
+        if (bannerView == null) {
+            Debug.Log("bannerView is null");
+            return;
+        }
+
+        Debug.Log("bannerAds hide");
 
         bannerView.Hide();
     }
 
     public void ShowBannerAds() {
-        if (bannerView == null) return;
+        if (bannerView == null) {
+            Debug.Log("bannerView is null");
+            return;
+        }
 
         bannerView.Show();
     }
